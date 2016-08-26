@@ -1,0 +1,11 @@
+
+<% hand.cards.each_with_index do |card, index| %>
+
+  <%= form_tag game_path(card.game), method: 'patch' do %>
+
+    <%= hidden_field_tag 'card_id', card.id %>
+    <%= button_tag "#{index+1}. #{card.name}" %>
+
+  <% end %>
+
+<% end %>

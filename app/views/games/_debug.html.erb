@@ -1,0 +1,27 @@
+<br><h2>Debug output</h2>
+
+<h3>Players:</h3>
+<ul>
+  <% @game.players.each do |player| %>
+    <li><%= player.name %>, Health: <%= player.health %>, Human: <%= player.is_human? %></li>
+    <ol>
+      <% player.hand.cards.each_with_index do |card, index| %>
+      <li><%= card.name %></li>
+      <% end %>
+    </ol>
+  <% end %>
+</ul>
+
+<h3>Deck:</h3>
+<ol>
+  <% @game.deck.cards.each do |card| %>
+  <li><%= card.name %></li>
+  <% end %>
+</ol>
+
+<h3>Trash:</h3>
+<ul>
+  <% @game.trash.cards.each do |card| %>
+  <li><%= card.name %></li>
+  <% end %>
+</ul>

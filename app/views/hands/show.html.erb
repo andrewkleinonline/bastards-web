@@ -1,0 +1,6 @@
+<h2>Your hand:</h2>
+<ol>
+  <% @hand.cards.each do |card| %>
+    <li><%= card.name %></li>
+  <% end %>
+</ol>

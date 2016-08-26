@@ -1,8 +1,8 @@
 class HandsController < ApplicationController
 
-  def show
-    @hand = Hand.find(params[:id])
-  end
+  # def show
+  #   @hand = Hand.find(params[:id])
+  # end
 
-  
+
 end

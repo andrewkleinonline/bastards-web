@@ -4,5 +4,6 @@ class CardsController < ApplicationController
     @cards = Card.all
   end
 
+  
 
 end
