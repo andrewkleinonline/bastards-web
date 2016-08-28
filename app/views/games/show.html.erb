@@ -1,20 +1,13 @@
-<h2><%= @player.name %>'s hand:</h2>
-<%= render partial: 'hand', locals: {hand: @player.hand} %>
+<%= render partial: 'message', collection: @messages if @messages %>
+
+<% if @player.is_human? %>
+  <h3><%= @player.name %>'s hand:</h3>
+  <%= render partial: 'hand', locals: {hand: @player.hand} %>
+<% else %>
+  <%= button_to "CPU move", game_path(@game), method: 'patch' %>
+<% end %>
 
 
 
 
 <%= render 'debug' %>
-<!-- <h3>Players:</h3>
-<ul>
-  <% @game.players.each do |player| %>
-    <li><%= player.name %>, Human: <%= player.is_human? %></li>
-  <% end %>
-</ul>
-
-<h3>Deck:</h3>
-<ul>
-  <% @game.deck.cards.each do |card| %>
-  <li><%= card.name %></li>
-  <% end %>
-</ul> -->

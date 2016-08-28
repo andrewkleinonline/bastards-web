@@ -1,0 +1,15 @@
+<h2>Welcome!!!</h2>
+
+
+
+<%= form_for @user do |f| %>
+  <%= f.label :new_user %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
+
+<%= form_for @user, url: '/sessions', method: 'post' do |f| %>
+  <%= f.label :existing_user %>
+  <%= f.collection_select :id, User.all, :id, :name %>
+  <%= f.submit "Log in as user" %>
+<% end %>

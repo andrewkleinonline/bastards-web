@@ -1,6 +1,4 @@
 <h2><%= @user.name %> is a beautiful name</h2>
 
 
-<%= form_for @game do |f| %>
-  <%= f.submit "Start Game" %>
-<% end %>
+<%= link_to "New Game Page", new_game_path %>
