@@ -16,16 +16,21 @@ class Game < ApplicationRecord
       @player1.draw_card
       @player2.draw_card
     end
-    #draw_initial_cards(@player1)
-    #draw_initial_cards(@player2)
   end
 
-  def damage_opponent(attacker, damage)
+  def damage_opponent(damage)
+    attacker = self.players.find_by(is_active?: true)
     opponent = self.players.find_by(is_active?: false)
-    opponent.health -= damage
-    opponent.save
+    damage_player(opponent, damage)
     "#{attacker.name} reduced #{opponent.name}'s health to #{opponent.health}!"
   end
+
+  def damage_player(player, damage)
+    player.health -= damage
+    player.health = 0 if player.health < 0
+    player.save
+  end
+
 
 
 end

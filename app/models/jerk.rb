@@ -6,4 +6,8 @@ class Jerk < Card
     self.power = 3
     self.number = 2
   end
+
+    def ability
+
+    end
 end

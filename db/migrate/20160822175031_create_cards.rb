@@ -8,6 +8,7 @@ class CreateCards < ActiveRecord::Migration[5.0]
       t.integer :power
       t.string :name
       t.integer :number
+      t.string :type
 
       t.timestamps
     end

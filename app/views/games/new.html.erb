@@ -1,5 +1,7 @@
 <h2>New game page!!!</h2>
 
+<%= render partial: 'message', collection: @messages if @messages %>
+
 <%= form_for @game do |f| %>
   <%= f.submit %>
 <% end %>

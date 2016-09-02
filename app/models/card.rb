@@ -20,4 +20,9 @@ class Card < ApplicationRecord
   def initialize_card_attributes
 
   end
+
+  def ability
+    [self.game.players.find_by(is_active?: true), self.game.players.find_by(is_active?: false)]
+
+  end
 end

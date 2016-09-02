@@ -15,16 +15,25 @@ class Player < ApplicationRecord
     messages = self.play_card(card)
     drawn_card_message = self.draw_card
     messages << drawn_card_message if self.is_human?
-    self.game.players.find_by(is_active?: false).update(is_active?: true)
-    self.update(is_active?: false)
+
+    messages << self.check_if_won
+
+    switch_active_player
 
     messages
   end
 
+  def switch_active_player
+    self.game.players.find_by(is_active?: false).update(is_active?: true)
+    self.update(is_active?: false)
+  end
+
   def play_card(card)
+    #byebug
     messages = ["#{self.name} played #{card.name}"]
-    #damage opponent (has a message)
-    messages << self.game.damage_opponent(self, card.power)
+    messages << self.game.damage_opponent(card.power)
+    messages << card.ability
+    #messages << card.ability
     #do whatever other ability (has a message)
 
     discard_card(card)
@@ -43,6 +52,13 @@ class Player < ApplicationRecord
   def discard_card(card)
     self.hand.cards.delete(card)
     card.game.trash.cards << card
+  end
+
+  def check_if_won
+    if self.game.players.find_by(is_active?: false).health == 0
+      self.update(is_winner?: true)
+      "#{self.name} won!!!"
+    end
   end
 
 end

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160824214538) do
     t.integer  "power"
     t.string   "name"
     t.integer  "number"
+    t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_cards_on_deck_id"
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160824214538) do
     t.integer  "health",     default: 20
     t.boolean  "is_human?",  default: false
     t.boolean  "is_active?", default: false
+    t.boolean  "is_winner?", default: false
     t.integer  "game_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
